@@ -1,5 +1,5 @@
-use crate as pallet_template;
-use frame_support::traits::{ConstU16, ConstU64};
+use crate as pallet_poe;
+use frame_support::traits::{ConstU16, ConstU32, ConstU64};
 use sp_core::H256;
 use sp_runtime::{
 	testing::Header,
@@ -17,7 +17,7 @@ frame_support::construct_runtime!(
 		UncheckedExtrinsic = UncheckedExtrinsic,
 	{
 		System: frame_system,
-		TemplateModule: pallet_template,
+		PoeModule: pallet_poe,
 	}
 );
 
@@ -48,8 +48,9 @@ impl frame_system::Config for Test {
 	type MaxConsumers = frame_support::traits::ConstU32<16>;
 }
 
-impl pallet_template::Config for Test {
+impl pallet_poe::Config for Test {
 	type RuntimeEvent = RuntimeEvent;
+	type MaxClaimLength = ConstU32<10>;
 }
 
 // Build genesis storage according to the mock runtime.
