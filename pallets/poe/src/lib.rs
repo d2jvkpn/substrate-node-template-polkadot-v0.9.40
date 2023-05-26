@@ -47,7 +47,7 @@ pub mod pallet {
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
 		#[pallet::call_index(0)]
-		#[pallet::weight(10_000 + T::DbWeight::get().writes(1).ref_time())]
+		#[pallet::weight(0)]
 		pub fn create_claim(origin: OriginFor<T>, claim: Vec<u8>) -> DispatchResult {
 			let who = ensure_signed(origin)?;
 
@@ -64,7 +64,7 @@ pub mod pallet {
 		}
 
 		#[pallet::call_index(1)]
-		#[pallet::weight(10_000 + T::DbWeight::get().writes(1).ref_time())]
+		#[pallet::weight(0)]
 		pub fn revoke_claim(origin: OriginFor<T>, claim: Vec<u8>) -> DispatchResult {
 			let who = ensure_signed(origin)?;
 
@@ -82,7 +82,7 @@ pub mod pallet {
 		}
 
 		#[pallet::call_index(2)]
-		#[pallet::weight(10_000 + T::DbWeight::get().writes(1).ref_time())]
+		#[pallet::weight(0)]
 		pub fn transfer_claim(
 			origin: OriginFor<T>,
 			claim: Vec<u8>,
