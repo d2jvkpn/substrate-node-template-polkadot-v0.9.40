@@ -5,13 +5,13 @@
 /// <https://docs.substrate.io/reference/frame-pallets/>
 pub use pallet::*;
 
-/*
 #[cfg(test)]
 mod mock;
 
 #[cfg(test)]
 mod tests;
 
+/*
 #[cfg(feature = "runtime-benchmarks")]
 mod benchmarking;
 */
@@ -169,8 +169,8 @@ pub mod pallet {
 		#[pallet::weight(10_000)]
 		pub fn transfer(
 			origin: OriginFor<T>,
-			recipient: T::AccountId,
 			kitty_id: KittyId,
+			recipient: T::AccountId,
 		) -> DispatchResult {
 			let who = ensure_signed(origin)?;
 			ensure!(Kitties::<T>::contains_key(kitty_id), Error::<T>::InvalidKittyId);
