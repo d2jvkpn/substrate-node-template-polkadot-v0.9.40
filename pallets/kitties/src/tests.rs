@@ -23,6 +23,10 @@ fn t_create() {
 		);
 
 		//
+		let kitty = KittiesModule::kitties(kitty_id).expect("kitty_id not found");
+		System::assert_last_event(Event::KittyCreated { who: account_id, kitty_id, kitty }.into());
+
+		//
 		let event = <frame_system::Pallet<Test>>::events()
 			.pop()
 			.expect("Expected at least one EventRecord to be found")
