@@ -76,6 +76,12 @@ fn t_breed() {
 		assert_eq!(KittiesModule::kitty_parents(breed_kitty_id), Some((kitty_id, kitty_id + 1)));
 
 		//
+		let kitty = KittiesModule::kitties(breed_kitty_id).expect("kitty_id not found");
+		System::assert_last_event(
+			Event::KittyBreed { who: account_id, kitty_id: breed_kitty_id, kitty }.into(),
+		);
+
+		//
 		let event = <frame_system::Pallet<Test>>::events()
 			.pop()
 			.expect("Expected at least one EventRecord to be found")
