@@ -77,7 +77,7 @@ pub mod pallet {
 			kitty_id: KittyId,
 			kitty: Kitty,
 		},
-		Transfer {
+		KittyTransfer {
 			who: T::AccountId,
 			recipient: T::AccountId,
 			kitty_id: KittyId,
@@ -180,7 +180,7 @@ pub mod pallet {
 
 			KittyOwner::<T>::insert(kitty_id, &recipient);
 
-			Self::deposit_event(Event::Transfer { who, recipient, kitty_id });
+			Self::deposit_event(Event::KittyTransfer { who, recipient, kitty_id });
 			Ok(())
 		}
 	}
